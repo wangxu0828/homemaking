@@ -1,0 +1,11 @@
+<view class="container">
+  <view class="tabs">
+    <view data-index="{{index}}" class="tab-items" bind:tap="handlerTabChange" wx:for="{{tabs}}" wx:key="index">
+      <view class="label {{currentTabNumber===index?'active-tab':''}}">{{item}}</view>
+      <!-- 下划线 -->
+      <view class="divider" wx:if="{{currentTabNumber===index}}"></view>
+    </view>
+  </view>
+  <view class="swiper"></view>
+  <view class="tab_panel"></view>
+</view>
