@@ -7,7 +7,7 @@
 .tabs {
   display: flex;
   align-items: center;
-  padding: 30rpx 0;
+  padding: 30rpx 0 0 0;
 }
 
 .tab-items {
@@ -16,11 +16,11 @@
   flex: 1;
   align-items: center;
   justify-content: space-between;
-  height: 80rpx;
+  height: 60rpx;
 }
 
 .divider {
-  width: 60rpx;
+  width: 30rpx;
   border: 2rpx solid #FBC020;
 }
 
@@ -28,4 +28,22 @@
   font-weight: bold;
   color: #333333;
   transform: translateY(-20%);
+}
+
+.swiper {
+  padding: 30rpx 0 30rpx 30rpx;
+}
+
+.swiper .category-swiper-item {
+  border-radius: 20rpx;
+  width: 300rpx !important;
+  height: 150rpx !important;
+  background-color: #FBC020;
+}
+
+.category-swiper-item-content {
+  color: #fff;
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
 }
