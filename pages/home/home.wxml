@@ -1,26 +1,23 @@
 <view class="container">
-  <view class="tabs">
-    <view data-index="{{index}}" class="tab-items" bind:tap="handlerTabChange" wx:for="{{tabs}}" wx:key="index">
-      <view class="label {{currentTabNumber===index?'active-tab':''}}">
-        {{item}}
+  <!-- 内容标签页 -->
+  <i-tabs tabs="{{tabs}}" bind:handlerTabChange="handlerTabChange" class="i-tabs">
+    <view slot="category">
+      <view class="category">
+        <swiper class="swiper" style="height: 75px" display-multiple-items="2" next-margin="60rpx">
+          <swiper-item wx:for="{{categoryList}}" wx:key="index">
+            <view class="category-swiper-item" bind:tap="handleCategoryChange" data-id="{{item.id}}">
+              <text class="category-swiper-item-content">
+                {{item.name}}
+              </text>
+                
+            </view>    
+          </swiper-item>
+        </swiper>
       </view>
-      <!-- 下划线 -->
-      <view class="divider" wx:if="{{currentTabNumber===index}}"></view>
     </view>
-  </view>
-  <view class="category">
-    <swiper class="swiper" style="height: 75px" display-multiple-items="2" next-margin="60rpx">
-      <swiper-item wx:for="{{categoryList}}" wx:key="index">
-        <view class="category-swiper-item" bind:tap="handleCategoryChange" data-id="{{item.id}}">
-          <text class="category-swiper-item-content">
-            {{item.name}}
-          </text>
-            
-        </view>      
-      </swiper-item>
-        
-    </swiper>
-      
-  </view>
-  <view class="tab_panel"></view>
+    <view slot="panel">
+      panel区域
+    </view>
+  </i-tabs>
+  <!-- 分类 -->
 </view>

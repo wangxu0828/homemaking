@@ -1,0 +1,19 @@
+<wxs src="../../common/wxs/touchMove.wxs" module="touch"></wxs>
+<view class="container">
+    <!-- tabs -->
+  <view class="tabs">
+    <view data-index="{{index}}" class="tab-items" bind:tap="handlerTabChange" wx:for="{{tabs}}" wx:key="index">
+      <view class="label {{currentTabNumber===index?'active-tab':''}}">
+        {{item}}
+      </view>
+      <!-- 下划线 -->
+      <view class="divider" wx:if="{{currentTabNumber===index}}"></view>
+    </view>
+  </view>
+  <slot name="category"></slot>
+  <view bind:touchstart="{{touch.handleTouchStart}}" bind:touchend="{{touch.handleTouchEnd}}" class="tab-panel">
+      <slot name="panel"></slot>
+  </view>
+</view>
+  
+

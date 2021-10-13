@@ -1,0 +1,33 @@
+
+var touchMoveStart = 0
+// 手指触摸开始的时间
+function handleTouchStart(event) {
+    touchMoveStart = event.changedTouches[0].clientX
+}
+
+function handleTouchEnd(event, ownerInstance) {
+    var touchMoveEnd = 0
+    touchMoveEnd = event.changedTouches[0].clientX
+
+    var distance = touchMoveEnd - touchMoveStart
+
+    var direction = 0
+
+    if (distance < 0 && distance < -70) {
+        direction = 1
+    }
+
+    if (distance > 0 && distance > 70) {
+        direction = -1
+    }
+
+    if (direction !== 0) {
+        ownerInstance.callMethod("handleTouch", { direction: direction })
+    }
+
+}
+
+module.exports = {
+    handleTouchStart: handleTouchStart,
+    handleTouchEnd: handleTouchEnd
+}

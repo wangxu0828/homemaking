@@ -17,12 +17,10 @@ Page({
       }
     ]
   },
-  handlerTabChange(event) {
-    this.setData({
-      currentTabNumber: event.currentTarget.dataset.index,
-    })
-  },
   handleCategoryChange(e) {
     console.log(e.currentTarget.dataset.id);
+  },
+  handlerTabChange(e) {
+    console.log(e);
   }
 })

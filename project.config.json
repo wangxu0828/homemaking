@@ -33,7 +33,7 @@
     "showES6CompileOption": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.20.0",
+  "libVersion": "2.19.6",
   "appid": "wxd6fdef85d198a46d",
   "projectname": "miniprogram-2",
   "debugOptions": {
