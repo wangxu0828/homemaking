@@ -1,3 +1,7 @@
+import Service from '../../model/service'
+
+const service = new Service()
+
 Page({
   data: {
     tabs: ['全部服务', '在提供', '正在找'],
@@ -16,6 +20,14 @@ Page({
         "name": "疏通"
       }
     ]
+  },
+  // 微信小程序钩子函数
+  onLoad() {
+    this._getServiceList()
+  },
+  // 获取服务列表
+  _getServiceList() {
+    service.getServiceList({ page: 1, count: 10 })
   },
   handleCategoryChange(e) {
     console.log(e.currentTarget.dataset.id);
