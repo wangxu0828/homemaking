@@ -1,14 +1,14 @@
 const componentOptions = {
   // 组件选项
   options: {
-    multipleSlots: true,
+    multipleSlots: true, //默认情况下,一个组件的wxml中只能有一个slot.需要使用多solt时,可以在组件js中声明启用
   },
   behaviors: [],
   properties: {
     tabs: {
       type: Array,
-      value: []
-    }
+      value: [],
+    },
   },
   // 组件数据
   data: {
@@ -19,9 +19,8 @@ const componentOptions = {
   observers: {},
   // 组件方法
   methods: {
-    init() { },
+    init() {},
     handlerTabChange(event) {
-
       if (this.data.currentTabNumber === event.currentTarget.dataset.index) {
         return
       }
@@ -36,27 +35,27 @@ const componentOptions = {
       let event = {
         currentTarget: {
           dataset: {
-            index: targetTabNumber
-          }
-        }
+            index: targetTabNumber,
+          },
+        },
       }
       if (targetTabNumber < 0 || targetTabNumber > this.data.tabs.length - 1) {
         return
       }
       this.handlerTabChange(event)
-    }
+    },
   },
   // 组件生命周期
   lifetimes: {
-    created() { },
+    created() {},
     attached() {
       this.init()
     },
-    ready() { },
-    moved() { },
-    detached() { },
+    ready() {},
+    moved() {},
+    detached() {},
   },
-  definitionFilter() { },
+  definitionFilter() {},
   // 页面生命周期
   pageLifetimes: {
     // 页面被展示
@@ -79,7 +78,7 @@ const componentOptions = {
       // 清除定时器等操作
     },
     // 页面尺寸变化时
-    resize() { },
+    resize() {},
   },
 }
 

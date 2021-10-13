@@ -9,14 +9,15 @@
               <text class="category-swiper-item-content">
                 {{item.name}}
               </text>
-                
-            </view>    
+            </view>
           </swiper-item>
         </swiper>
       </view>
     </view>
     <view slot="panel">
-      panel区域
+      <view wx:for="{{ServiceList}}" wx:key="index">
+        <i-service-preview service="{{item}}"></i-service-preview>
+      </view>
     </view>
   </i-tabs>
   <!-- 分类 -->

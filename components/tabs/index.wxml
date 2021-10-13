@@ -12,7 +12,8 @@
   </view>
   <slot name="category"></slot>
   <view bind:touchstart="{{touch.handleTouchStart}}" bind:touchend="{{touch.handleTouchEnd}}" class="tab-panel">
-      <slot name="panel"></slot>
+      <slot name="panel">
+      </slot>
   </view>
 </view>
   
