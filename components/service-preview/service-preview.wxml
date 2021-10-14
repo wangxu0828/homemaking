@@ -1,33 +1,32 @@
-<view class="container" bind:tap="handleSelect">
+<view class="container">
     <view class="left">
-        <view class="type-tag">
-            {{service.type === serviceType.PROVIDE ? '在提供' : '正在找'}}
-        </view>
-        <image class="cover-image" mode="aspectFill" src="{{service.cover_image.path}}"></image>
+        <image class="left-image" src="{{service.cover_image.path}}"  />
+          <view class="left-find"> 
+              正在找
+          </view>
     </view>
     <view class="right">
         <view class="row">
-            <view class="service-name">{{service.title}}</view>
-            <view class="category-tag">
-                <i-icon name="biaoqian" color="#f27013"></i-icon>
-                <view class="tag-text">{{service.category.name}}</view>
+            <view class="right-title">
+                {{service.title}}
+            </view>
+            <view class="right-property">
+                <text class="iconfont icon-biaoqian"></text>   
+                <view class="right-property-content">
+                    {{service.category.name}}
+                </view>
             </view>
         </view>
         <view class="row">
-            <view class="publisher">
-                <i-avatar shape="circle" src="{{service.publisher.avatar}}" text="{{service.publisher.nickname}}"
-                          size="40" fontSize="22"></i-avatar>
-            </view>
-            <view wx:if="{{service.type === serviceType.PROVIDE}}" class="score">★ {{service.score}}</view>
+            <image class="right-user-avater" src="{{service.publisher.avatar}}" />
+            <view class="right-user-name">{{service.publisher.nickname}}</view>
         </view>
         <view class="row">
-            <view class="publish-date">{{service.create_time}}</view>
+            <view class="right-time">{{service.create_time}}</view>
         </view>
-        <view class="row row-last">
-            <view class="price">
-                <text class="label">￥</text>{{service.price}}
-            </view>
-            <view wx:if="{{service.type === serviceType.PROVIDE}}" class="sales-volume">已售 {{service.sales_volume}}</view>
+        <view class="row last-row">
+            <view class="right-price">{{service.price}}</view>
+            <view class="right-sold">已售{{service.sales_volume}}</view>
         </view>
     </view>
 </view>

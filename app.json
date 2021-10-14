@@ -28,8 +28,8 @@
       {
         "pagePath": "pages/message/message",
         "text": "消息",
-        "iconPath": "images/tabbar/publish.png",
-        "selectedIconPath": "images/tabbar/publish-selected.png"
+        "iconPath": "images/tabbar/message.png",
+        "selectedIconPath": "images/tabbar/message-selected.png"
       },
       {
         "pagePath": "pages/my/my",
