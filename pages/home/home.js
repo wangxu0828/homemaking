@@ -10,19 +10,21 @@ Page({
     ServiceList: [],
     currentTabId: null,
     currentCategoryId: null,
-    loading:true
+    loading: true,
   },
   // 微信小程序钩子函数
- async onLoad() {
-   await this._getServiceList()
-   await this._getcategoryList()
+  async onLoad() {
+    await this._getServiceList()
+    await this._getcategoryList()
     this.setData({
-      loading:false
+      loading: false,
     })
   },
   // 获取服务列表
   async _getServiceList() {
-    const res = await service.reset().getServiceList(this.data.currentCategoryId, this.data.currentTabId)
+    const res = await service
+      .reset()
+      .getServiceList(this.data.currentCategoryId, this.data.currentTabId)
     this.setData({
       ServiceList: res,
     })
@@ -38,15 +40,22 @@ Page({
       categoryList: categoryList,
     })
   },
-  handleCategoryChange:throttle(function(e) {
+  handleCategoryChange: throttle(function (e) {
     this.data.currentCategoryId = e.currentTarget.dataset.id
     this._getServiceList()
-  },1000),  
+  }, 1000),
 
-  handlerTabChange:throttle(function(e) {
+  handlerTabChange: throttle(function (e) {
     this.data.currentTabId = e.detail
     this._getServiceList()
-  },1000),  
+  }, 1000),
+
+  handleSelectService(e) {
+    const serviceid = e.currentTarget.dataset.serviceid
+    wx.navigateTo({
+      url: '/pages/service-detail/service-detail?serviceid=' + serviceid,
+    })
+  },
   // 上拉触底生命周期函数
   async onPullDownRefresh() {
     // const res =await service.reset().getServiceList()
@@ -58,10 +67,10 @@ Page({
     wx.stopPullDownRefresh()
   },
   // 下拉触底生命周期函数
- async onReachBottom() {
+  async onReachBottom() {
     const res = await service.getServiceList()
     this.setData({
       ServiceList: res,
     })
-  }
+  },
 })
