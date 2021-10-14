@@ -4,4 +4,7 @@ view {
 
 page {
   height: 100%;
+  width: 750rpx;
+  overflow-x: hidden;
+  background-color: #efefef;
 }

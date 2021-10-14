@@ -1,3 +1,5 @@
+<import src="home.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
 <view class="container">
   <!-- 内容标签页 -->
   <i-tabs tabs="{{tabs}}" bind:handlerTabChange="handlerTabChange" class="i-tabs">
@@ -6,15 +8,16 @@
         <swiper class="swiper" style="height: 75px" display-multiple-items="2" next-margin="60rpx">
           <swiper-item wx:for="{{categoryList}}" wx:key="index">
             <view class="category-swiper-item" bind:tap="handleCategoryChange" data-id="{{item.id}}">
-              <text class="category-swiper-item-content">
+              <vie class="category-swiper-item-content">
                 {{item.name}}
-              </text>
+              </vie>
             </view>
           </swiper-item>
         </swiper>
       </view>
     </view>
     <view slot="panel">
+      <i-show-status show="{{ServiceList.length===0}}"></i-show-status>
       <view wx:for="{{ServiceList}}" wx:key="index">
         <i-service-preview service="{{item}}"></i-service-preview>
       </view>

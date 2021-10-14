@@ -1,6 +1,6 @@
 {
+  "enablePullDownRefresh":true,
   "usingComponents": {
-    "i-tabs": "/components/tabs",
-    "i-service-preview": "/components/service-preview/service-preview"
+
   }
 }

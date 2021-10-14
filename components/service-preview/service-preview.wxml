@@ -10,8 +10,9 @@
             <view class="right-title">
                 {{service.title}}
             </view>
-            <view class="right-property">
-                <text class="iconfont icon-biaoqian"></text>   
+            <view class="right-property first-row">
+                <!-- <text class="iconfont icon-biaoqian"></text>    -->
+                <i-icon name="biaoqian" color="red" size="20" style="margin-right:10rpx"></i-icon>
                 <view class="right-property-content">
                     {{service.category.name}}
                 </view>

@@ -1,0 +1,252 @@
+<!--
+此文件为开发者工具生成，生成时间: 2021/10/14 下午4:20:27 
+使用方法：
+在 C:\Users\quanbang-devp-web\Desktop\homemaking\pages\home\home.wxml 引入模板
+
+```
+<import src="home.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 C:\Users\quanbang-devp-web\Desktop\homemaking\pages\home\home.wxss 中引入样式
+```
+@import "./home.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <view is="components/tabs/index" class="i-tabs">
+        <view class="tabs-index--container">
+          <view class="tabs-index--tabs">
+            <view class="tabs-index--tab-items" data-index="0">
+              <view class="tabs-index--label tabs-index--active-tab sk-transparent sk-text-14-2857-247 sk-text">
+                全部服务
+              </view>
+              <view class="tabs-index--divider" style="border: none;"></view>
+            </view>
+            <view class="tabs-index--tab-items" data-index="1">
+              <view class="tabs-index--label sk-transparent sk-text-14-2857-37 sk-text">
+                在提供
+              </view>
+            </view>
+            <view class="tabs-index--tab-items" data-index="2">
+              <view class="tabs-index--label sk-transparent sk-text-14-2857-693 sk-text">
+                正在找
+              </view>
+            </view>
+          </view>
+          <view>
+            <view class="category">
+              <swiper class="swiper" display-multiple-items="2" next-margin="60rpx" style="height: 75px" current="0" autoplay="false">
+                <swiper-item style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
+                  <view class="category-swiper-item" data-id="0">
+                    <vie class="category-swiper-item-content sk-transparent sk-text-14-2857-100 sk-text">
+                      全部
+                    </vie>
+                  </view>
+                </swiper-item>
+              </swiper>
+            </view>
+          </view>
+          <view class="tabs-index--tab-panel">
+            <view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <image class="preview--left-image sk-image"></image>
+                      <view class="preview--left-find sk-transparent sk-text-14-2857-199 sk-text">
+                        正在找
+                      </view>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--right-title sk-transparent sk-text-14-2857-992 sk-text">
+                          上门电脑维修
+                        </view>
+                        <view class="preview--right-property preview--first-row">
+                          <view is="components/iconfont/index" style="margin-right:5px">
+                            <text class="index--iconfont index--icon-biaoqian sk-pseudo sk-pseudo-circle" style="color:red; font-size:11px"></text>
+                          </view>
+                          <view class="preview--right-property-content sk-transparent sk-text-14-2857-501 sk-text" style="background-position-x: 50%;">
+                            家电维修
+                          </view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <image class="preview--right-user-avater sk-image"></image>
+                        <view class="preview--right-user-name sk-transparent sk-opacity">Li</view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--right-time sk-transparent sk-text-14-2857-500 sk-text">2021-09-23 21:23:07</view>
+                      </view>
+                      <view class="preview--row preview--last-row">
+                        <view class="preview--right-price sk-transparent sk-text-14-2857-387 sk-text">999.00</view>
+                        <view class="preview--right-sold sk-transparent sk-text-14-2857-619 sk-text">已售6</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <image class="preview--left-image sk-image"></image>
+                      <view class="preview--left-find sk-transparent sk-text-14-2857-306 sk-text">
+                        正在找
+                      </view>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--right-title sk-transparent sk-text-14-2857-824 sk-text">
+                          新房老房装修
+                        </view>
+                        <view class="preview--right-property preview--first-row">
+                          <view is="components/iconfont/index" style="margin-right:5px">
+                            <text class="index--iconfont index--icon-biaoqian sk-pseudo sk-pseudo-circle" style="color:red; font-size:11px"></text>
+                          </view>
+                          <view class="preview--right-property-content sk-transparent sk-text-14-2857-262 sk-text" style="background-position-x: 50%;">
+                            装修
+                          </view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <image class="preview--right-user-avater sk-image"></image>
+                        <view class="preview--right-user-name sk-transparent sk-text-14-2857-507 sk-text">A如影随形</view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--right-time sk-transparent sk-text-14-2857-999 sk-text">2021-09-22 21:56:21</view>
+                      </view>
+                      <view class="preview--row preview--last-row">
+                        <view class="preview--right-price sk-transparent sk-text-14-2857-622 sk-text">3999.00</view>
+                        <view class="preview--right-sold sk-transparent sk-text-14-2857-11 sk-text">已售0</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <image class="preview--left-image sk-image"></image>
+                      <view class="preview--left-find sk-transparent sk-text-14-2857-176 sk-text">
+                        正在找
+                      </view>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--right-title sk-transparent sk-text-14-2857-955 sk-text">
+                          专业室内装修设计服务
+                        </view>
+                        <view class="preview--right-property preview--first-row">
+                          <view is="components/iconfont/index" style="margin-right:5px">
+                            <text class="index--iconfont index--icon-biaoqian sk-pseudo sk-pseudo-circle" style="color:red; font-size:11px"></text>
+                          </view>
+                          <view class="preview--right-property-content sk-transparent sk-text-14-2857-582 sk-text" style="background-position-x: 50%;">
+                            装修
+                          </view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <image class="preview--right-user-avater sk-image"></image>
+                        <view class="preview--right-user-name sk-transparent sk-text-14-2857-613 sk-text">CJ</view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--right-time sk-transparent sk-text-14-2857-324 sk-text">2021-09-14 23:23:08</view>
+                      </view>
+                      <view class="preview--row preview--last-row">
+                        <view class="preview--right-price sk-transparent sk-text-14-2857-172 sk-text">3999.00</view>
+                        <view class="preview--right-sold sk-transparent sk-text-14-2857-448 sk-text">已售0</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <image class="preview--left-image sk-image"></image>
+                      <view class="preview--left-find sk-transparent sk-text-14-2857-351 sk-text">
+                        正在找
+                      </view>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--right-title sk-transparent sk-text-14-2857-797 sk-text">
+                          天秀创意粉刷
+                        </view>
+                        <view class="preview--right-property preview--first-row">
+                          <view is="components/iconfont/index" style="margin-right:5px">
+                            <text class="index--iconfont index--icon-biaoqian sk-pseudo sk-pseudo-circle" style="color:red; font-size:11px"></text>
+                          </view>
+                          <view class="preview--right-property-content sk-transparent sk-text-14-2857-520 sk-text" style="background-position-x: 50%;">
+                            装修
+                          </view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <image class="preview--right-user-avater sk-image"></image>
+                        <view class="preview--right-user-name sk-transparent sk-text-14-2857-281 sk-text">沁塵🙄</view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--right-time sk-transparent sk-text-14-2857-174 sk-text">2021-09-05 21:05:08</view>
+                      </view>
+                      <view class="preview--row preview--last-row">
+                        <view class="preview--right-price sk-transparent sk-text-14-2857-763 sk-text">5000.00</view>
+                        <view class="preview--right-sold sk-transparent sk-text-14-2857-438 sk-text">已售9</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+              <view>
+                <view is="components/service-preview/service-preview">
+                  <view class="preview--container">
+                    <view class="preview--left">
+                      <image class="preview--left-image sk-image"></image>
+                      <view class="preview--left-find sk-transparent sk-text-14-2857-279 sk-text">
+                        正在找
+                      </view>
+                    </view>
+                    <view class="preview--right">
+                      <view class="preview--row">
+                        <view class="preview--right-title sk-transparent sk-text-14-2857-983 sk-text">
+                          汽车维护保养套餐
+                        </view>
+                        <view class="preview--right-property preview--first-row">
+                          <view is="components/iconfont/index" style="margin-right:5px">
+                            <text class="index--iconfont index--icon-biaoqian sk-pseudo sk-pseudo-circle" style="color:red; font-size:11px"></text>
+                          </view>
+                          <view class="preview--right-property-content sk-transparent sk-text-14-2857-123 sk-text" style="background-position-x: 50%;">
+                            汽修
+                          </view>
+                        </view>
+                      </view>
+                      <view class="preview--row">
+                        <image class="preview--right-user-avater sk-image"></image>
+                        <view class="preview--right-user-name sk-transparent sk-text-14-2857-94 sk-text">沁塵</view>
+                      </view>
+                      <view class="preview--row">
+                        <view class="preview--right-time sk-transparent sk-text-14-2857-112 sk-text">2021-09-05 19:40:42</view>
+                      </view>
+                      <view class="preview--row preview--last-row">
+                        <view class="preview--right-price sk-transparent sk-text-14-2857-850 sk-text">2999.00</view>
+                        <view class="preview--right-sold sk-transparent sk-text-14-2857-160 sk-text">已售14</view>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

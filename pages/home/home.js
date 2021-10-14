@@ -1,39 +1,31 @@
 import Service from '../../model/service'
 import Category from '../../model/category'
+import { throttle } from '../../utils/utils'
 const service = new Service()
 
 Page({
   data: {
     tabs: ['全部服务', '在提供', '正在找'],
-    currentTabNumber: 0,
-    categoryList: [
-      {
-        id: 1,
-        name: '保洁',
-      },
-      {
-        id: 2,
-        name: '汽修',
-      },
-      {
-        id: 3,
-        name: '疏通',
-      },
-    ],
+    categoryList: [],
     ServiceList: [],
+    currentTabId: null,
+    currentCategoryId: null,
+    loading:true
   },
   // 微信小程序钩子函数
-  onLoad() {
-    this._getServiceList()
-    this._getcategoryList()
+ async onLoad() {
+   await this._getServiceList()
+   await this._getcategoryList()
+    this.setData({
+      loading:false
+    })
   },
   // 获取服务列表
   async _getServiceList() {
-    const res = await service.getServiceList({ page: 1, count: 10 })
+    const res = await service.reset().getServiceList(this.data.currentCategoryId, this.data.currentTabId)
     this.setData({
-      ServiceList: res.data,
+      ServiceList: res,
     })
-    console.log(this.data.ServiceList)
   },
   // 获取分类列表
   async _getcategoryList() {
@@ -46,8 +38,30 @@ Page({
       categoryList: categoryList,
     })
   },
-  handleCategoryChange(e) {
-    console.log(e.currentTarget.dataset.id)
+  handleCategoryChange:throttle(function(e) {
+    this.data.currentCategoryId = e.currentTarget.dataset.id
+    this._getServiceList()
+  },1000),  
+
+  handlerTabChange:throttle(function(e) {
+    this.data.currentTabId = e.detail
+    this._getServiceList()
+  },1000),  
+  // 上拉触底生命周期函数
+  async onPullDownRefresh() {
+    // const res =await service.reset().getServiceList()
+    // console.log(res);
+    // this.setData({
+    //   ServiceList: res,
+    // })
+    this._getServiceList()
+    wx.stopPullDownRefresh()
   },
-  handlerTabChange(e) {},
+  // 下拉触底生命周期函数
+ async onReachBottom() {
+    const res = await service.getServiceList()
+    this.setData({
+      ServiceList: res,
+    })
+  }
 })

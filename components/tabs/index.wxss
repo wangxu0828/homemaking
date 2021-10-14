@@ -1,12 +1,16 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    min-height: 100%;
   }
   .tabs {
     display: flex;
     align-items: center;
     padding: 30rpx 0 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 444;
+    background-color: #fff;
   }
   
   .tab-items {

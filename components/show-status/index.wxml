@@ -1,0 +1,5 @@
+<view class="show-status" wx:if="{{show}}" style="margin-top:{{top}}rpx;"> 
+    {{content}}
+</view>
+  
+
