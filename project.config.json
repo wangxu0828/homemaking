@@ -63,20 +63,7 @@
       "list": []
     },
     "miniprogram": {
-      "list": [
-        {
-          "name": "服务详情页",
-          "pathName": "pages/service-detail/service-detail",
-          "query": "id=156",
-          "scene": null
-        },
-        {
-          "name": "pages/service-detail/service-detail",
-          "pathName": "pages/service-detail/service-detail",
-          "query": "serviceid=156",
-          "scene": null
-        }
-      ]
+      "list": []
     }
   }
 }

@@ -19,6 +19,14 @@ const componentOptions = {
   // 组件方法
   methods: {
     init() { },
+    handleImageClick(e) {
+      const index = e.currentTarget.dataset.index
+      wx.previewImage({
+        current: this.data.rating.illustration[index],
+        urls: this.data.rating.illustration,
+      });
+
+    }
   },
   // 组件生命周期
   lifetimes: {

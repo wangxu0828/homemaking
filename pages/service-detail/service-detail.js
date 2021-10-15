@@ -14,18 +14,14 @@ Page({
     this.setData({
       serviceId,
     })
-
     // 获取当前页面服务
     await this._getServiceById()
-
-    this._checkRole()
-
     await this._getRatingList()
+    this._checkRole()
   },
 
   async _getServiceById() {
     const service = await Service.getServiceById(this.data.serviceId)
-    console.log(service)
     this.setData({
       service,
     })
@@ -33,7 +29,6 @@ Page({
 
   _checkRole() {
     const userInfo = User.getUserInfoByLocal()
-
     if (userInfo && userInfo.id === this.data.service.publisher.id) {
       this.setData({
         isPulisher: true
@@ -42,7 +37,7 @@ Page({
   },
 
   async _getRatingList() {
-    const res = await rating.getRatingList(this.data.serviceId)
+    const res = await rating.reset().getRatingList(this.data.serviceId)
     this.setData({
       ratingList: res
     })

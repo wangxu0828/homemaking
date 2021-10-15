@@ -31,7 +31,10 @@
   </view>
   <view class="service-rating">
     <view class="service-rating-title">历史评价</view>
-    <view class="service-rating-list">
+    <view class="rating-status" wx:if="{{ratingList.length===0}}">
+      <i-show-status show content="没有评价数据"></i-show-status>
+    </view>
+    <view wx:if="{{ratingList.length!==0}}" class="service-rating-list">
       <view class="service-rating-item" wx:for="{{ratingList}}" wx:key="index">
         <i-service-rating rating="{{item}}"></i-service-rating>
       </view>

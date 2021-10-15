@@ -10,9 +10,7 @@
     <i-rating selected="{{rating.score}}"></i-rating>
   </view>
   <view class="rating-content">{{rating.content}}</view>
-  <view wx:if="{{rating.illustration.length>0}}">
-    <view class="rating-image">
-      <image src="{{rating.illustration[0]}}"></image>
-    </view>
-  </view>
+  <block wx:for="{{rating.illustration}}" wx:if="{{rating.illustration.length>0}}" wx:key="index">
+    <image data-index="{{index}}" bind:tap="handleImageClick" src="{{rating.illustration[index]}}"></image>
+  </block>
 </view>

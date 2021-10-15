@@ -53,3 +53,7 @@
   margin-top: 30rpx;
   background-color: #fff;
 }
+
+.rating-status {
+  min-height: 500rpx;
+}
