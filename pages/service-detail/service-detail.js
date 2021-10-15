@@ -6,11 +6,11 @@ Page({
   data: {
     serviceId: '',
     service: {},
-    isPulisher:false,
-    ratingList:[]
+    isPulisher: false,
+    ratingList: []
   },
- async onLoad(options) {
-   const serviceId = options.serviceid
+  async onLoad(options) {
+    const serviceId = options.serviceid
     this.setData({
       serviceId,
     })
@@ -33,18 +33,18 @@ Page({
 
   _checkRole() {
     const userInfo = User.getUserInfoByLocal()
-   
-    if(userInfo && userInfo.id === this.data.service.publisher.id) {
+
+    if (userInfo && userInfo.id === this.data.service.publisher.id) {
       this.setData({
-        isPulisher:true
+        isPulisher: true
       })
     }
   },
 
- async _getRatingList() {
-    const res =  await rating.getRatingList(this.data.serviceId)
+  async _getRatingList() {
+    const res = await rating.getRatingList(this.data.serviceId)
     this.setData({
-      ratingList:res
+      ratingList: res
     })
   }
 })

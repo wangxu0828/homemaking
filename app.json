@@ -47,6 +47,8 @@
     "i-service-preview": "/components/service-preview/service-preview",
     "i-icon":"/components/iconfont",
     "i-show-status":"/components/show-status",
-    "i-avatar": "/components/avatar"
+    "i-avatar": "/components/avatar",
+    "i-service-rating": "/components/service_rating",
+    "i-rating":"/components/rating"
   }
 }

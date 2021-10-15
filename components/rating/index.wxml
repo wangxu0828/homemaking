@@ -1,0 +1,5 @@
+<view class="rating-icon">
+  <view wx:for="{{count}}" wx:key="index">
+    <i-icon size="{{size}}" name="{{icon}}" color="{{ index < selected ? selectedColor : defaultColor}}"></i-icon>
+  </view>
+</view>

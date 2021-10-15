@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="row">
+    <view class="rating-avatar">
+      <i-avatar avatar="{{rating.author.avatar}}" nickname="{{rating.author.nickname}}"></i-avatar>
+    </view>
+    <view class="rating-creat-time">{{rating.create_time}}</view>
+  </view>
+  <view class="score">
+    <text>评分:</text>
+    <i-rating selected="{{rating.score}}"></i-rating>
+  </view>
+  <view class="rating-content">{{rating.content}}</view>
+  <view wx:if="{{rating.illustration.length>0}}">
+    <view class="rating-image">
+      <image src="{{rating.illustration[0]}}"></image>
+    </view>
+  </view>
+</view>

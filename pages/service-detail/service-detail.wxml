@@ -3,17 +3,17 @@
   <view class="content">
     <view class="row">
       <view class="cover_image">
-        <image src="{{service.cover_image.path}}" mode="scaleToFill"/>
+        <image src="{{service.cover_image.path}}" mode="scaleToFill" />
       </view>
     </view>
     <view class="row">
-        <view class="title_content">{{service.title}}</view>
-        <view class="title_tag">
-          <view>
-            <i-icon name="biaoqian" color="red" size="30" style="margin-right:10rpx"></i-icon>
-          </view>
-          {{service.category.name}}
+      <view class="title_content">{{service.title}}</view>
+      <view class="title_tag">
+        <view>
+          <i-icon name="biaoqian" color="red" size="30" style="margin-right:10rpx"></i-icon>
         </view>
+        {{service.category.name}}
+      </view>
     </view>
     <view class="row">
       <i-avatar shape="circle" avatar="{{service.publisher.avatar}}" size="50" nickname="{{service.publisher.nickname}}"></i-avatar>
@@ -22,25 +22,20 @@
     <view class="row">
       <view>{{service.create_time}}</view>
     </view>
-    <view class="row">
-      {{service.price}}
-    </view>
+    <view class="row">{{service.price}}</view>
     <view class="row">{{service.description}}</view>
   </view>
-
   <view wx:if="{{isPulisher}}" class="service-status">
     <view>服务状态</view>
-    <view>{{statusText.convert(service.status)}}</view>      
+    <view>{{statusText.convert(service.status)}}</view>
   </view>
-
   <view class="service-rating">
-    <view class="rating-rating-title">
-      
+    <view class="service-rating-title">历史评价</view>
+    <view class="service-rating-list">
+      <view class="service-rating-item" wx:for="{{ratingList}}" wx:key="index">
+        <i-service-rating rating="{{item}}"></i-service-rating>
+      </view>
     </view>
-    <view class="rating-rating-list">
-      
-    </view>
-        
   </view>
   <view class="action-bar"></view>
 </view>
