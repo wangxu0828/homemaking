@@ -1,0 +1,4 @@
+<view class="container">
+  <image class="right-user-avater" src="{{avatar}}" style="width:{{size}}rpx;height:{{size}}rpx;border-radius:{{shape === 'circle' ? '50%' : radius +'rpx'}}" />
+  <view class="right-user-name" style="font-size:{{fontSize}}rpx">{{nickname}}</view>
+</view>

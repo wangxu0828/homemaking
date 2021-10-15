@@ -19,8 +19,9 @@
             </view>
         </view>
         <view class="row">
-            <image class="right-user-avater" src="{{service.publisher.avatar}}" />
-            <view class="right-user-name">{{service.publisher.nickname}}</view>
+            <!-- <image class="right-user-avater" src="{{service.publisher.avatar}}" />
+            <view class="right-user-name">{{service.publisher.nickname}}</view> -->
+            <i-avatar shape="circle" fontSize="20" size="50"  nickname="{{service.publisher.nickname}}" avatar="{{service.publisher.avatar}}"></i-avatar>
         </view>
         <view class="row">
             <view class="right-time">{{service.create_time}}</view>

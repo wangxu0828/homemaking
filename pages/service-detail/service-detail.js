@@ -1,17 +1,21 @@
 import Service from '../../model/service'
+import User from '../../model/user'
 Page({
   data: {
     serviceId: '',
     service: {},
+    isPulisher:false
   },
-  onLoad(options) {
-    const serviceId = options.serviceid
+ async onLoad(options) {
+   const serviceId = options.serviceid
     this.setData({
       serviceId,
     })
 
     // 获取当前页面服务
-    this._getServiceById()
+    await this._getServiceById()
+
+    this._checkRole()
   },
 
   async _getServiceById() {
@@ -21,4 +25,14 @@ Page({
       service,
     })
   },
+
+  _checkRole() {
+    const userInfo = User.getUserInfoByLocal()
+   
+    if(userInfo && userInfo.id === this.data.service.publisher.id) {
+      this.setData({
+        isPulisher:true
+      })
+    }
+  }
 })
