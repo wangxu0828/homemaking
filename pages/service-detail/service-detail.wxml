@@ -33,6 +33,14 @@
     <view>{{statusText.convert(service.status)}}</view>      
   </view>
 
-  <view class="rating-list"></view>
+  <view class="service-rating">
+    <view class="rating-rating-title">
+      
+    </view>
+    <view class="rating-rating-list">
+      
+    </view>
+        
+  </view>
   <view class="action-bar"></view>
 </view>

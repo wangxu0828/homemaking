@@ -1,10 +1,13 @@
 import Service from '../../model/service'
 import User from '../../model/user'
+import Rating from '../../model/rating'
+const rating = new Rating()
 Page({
   data: {
     serviceId: '',
     service: {},
-    isPulisher:false
+    isPulisher:false,
+    ratingList:[]
   },
  async onLoad(options) {
    const serviceId = options.serviceid
@@ -16,6 +19,8 @@ Page({
     await this._getServiceById()
 
     this._checkRole()
+
+    await this._getRatingList()
   },
 
   async _getServiceById() {
@@ -34,5 +39,12 @@ Page({
         isPulisher:true
       })
     }
+  },
+
+ async _getRatingList() {
+    const res =  await rating.getRatingList(this.data.serviceId)
+    this.setData({
+      ratingList:res
+    })
   }
 })

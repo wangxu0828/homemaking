@@ -1,10 +1,7 @@
 import Http from '../utils/http'
-class Service {
-  page = 1
-  count = 7
-  service = {}
-  serviceList = []
-  serviceFlag = true
+import Base from './base'
+class Service extends Base {
+  
   async getServiceList(category_id = null, type = null) {
     if (!this.serviceFlag) {
       return this.serviceList
@@ -29,14 +26,7 @@ class Service {
     return this.serviceList
   }
 
-  reset() {
-    this.page = 1
-    this.count = 7
-    this.serviceFlag = true
-    this.serviceList = []
-    this.service = {}
-    return this
-  }
+  
 
   static getServiceById(serviceId) {
     return Http.request({
