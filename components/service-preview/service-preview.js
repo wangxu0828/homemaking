@@ -1,5 +1,9 @@
+import serviceType from "../../enum/service-type";
+
 Component({
-  data: {},
+  data: {
+    serviceTypeEnum: serviceType
+  },
   properties: {
     service: {
       type: Object,

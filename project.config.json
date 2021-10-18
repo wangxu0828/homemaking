@@ -63,7 +63,14 @@
       "list": []
     },
     "miniprogram": {
-      "list": []
+      "list": [
+        {
+          "name": "pages/service-detail/service-detail",
+          "pathName": "pages/service-detail/service-detail",
+          "query": "serviceid=155",
+          "scene": null
+        }
+      ]
     }
   }
 }

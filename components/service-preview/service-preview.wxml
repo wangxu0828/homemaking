@@ -1,34 +1,30 @@
 <view class="container">
     <view class="left">
-        <image class="left-image" src="{{service.cover_image.path}}"  />
-          <view class="left-find"> 
-              正在找
-          </view>
+        <image class="left-image" src="{{service.cover_image.path}}" />
+        <view class="left-find">{{service.type === serviceTypeEnum.PROVIDE ? '在提供' : '正在找'}}</view>
     </view>
     <view class="right">
         <view class="row">
-            <view class="right-title">
-                {{service.title}}
-            </view>
+            <view class="right-title">{{service.title}}</view>
             <view class="right-property first-row">
-                <!-- <text class="iconfont icon-biaoqian"></text>    -->
+                <!-- <text class="iconfont icon-biaoqian"></text> -->
                 <i-icon name="biaoqian" color="red" size="20" style="margin-right:10rpx"></i-icon>
-                <view class="right-property-content">
-                    {{service.category.name}}
-                </view>
+                <view class="right-property-content">{{service.category.name}}</view>
             </view>
         </view>
         <view class="row">
             <!-- <image class="right-user-avater" src="{{service.publisher.avatar}}" />
             <view class="right-user-name">{{service.publisher.nickname}}</view> -->
-            <i-avatar shape="circle" fontSize="20" size="50"  nickname="{{service.publisher.nickname}}" avatar="{{service.publisher.avatar}}"></i-avatar>
+            <i-avatar shape="circle" fontSize="20" size="50" nickname="{{service.publisher.nickname}}" avatar="{{service.publisher.avatar}}"></i-avatar>
         </view>
         <view class="row">
             <view class="right-time">{{service.create_time}}</view>
         </view>
         <view class="row last-row">
             <view class="right-price">{{service.price}}</view>
-            <view class="right-sold">已售{{service.sales_volume}}</view>
+            <view class="right-sold" wx:if="{{service.type === serviceTypeEnum.PROVIDE}}">
+                已售{{service.sales_volume}}
+            </view>
         </view>
     </view>
 </view>
