@@ -1,6 +1,6 @@
 <view class="action-bar-item">
   <!-- 联系对方 -->
-  <button>联系对方</button>
+  <button bind:tap="handleChat">联系对方</button>
   <!-- 服务状态是不是可提供的 -->
-  <button wx:if="{{service.type === serviceTypeEnum.PROVIDE}}">立即预约</button>
+  <button bind:tap="handleOrder" wx:if="{{service.type === serviceTypeEnum.PROVIDE}}">立即预约</button>
 </view>

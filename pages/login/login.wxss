@@ -1,0 +1,43 @@
+page {
+  background-color: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.open-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40%;
+}
+
+.avatar {
+  height: 220rpx;
+  width: 220rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.nickname {
+  margin-top: 30rpx;
+}
+
+.auth-button {
+  margin-top: 60rpx;
+}
+
+.auth-button button {
+  background-color: #f3d066;
+}

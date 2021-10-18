@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/home/home", "pages/message/message", "pages/my/my", "pages/publish/publish","pages/service-detail/service-detail"],
+  "pages": ["pages/home/home", "pages/message/message", "pages/my/my", "pages/publish/publish", "pages/service-detail/service-detail", "pages/login/login"],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
@@ -45,11 +45,11 @@
   "usingComponents": {
     "i-tabs": "/components/tabs",
     "i-service-preview": "/components/service-preview/service-preview",
-    "i-icon":"/components/iconfont",
-    "i-show-status":"/components/show-status",
+    "i-icon": "/components/iconfont",
+    "i-show-status": "/components/show-status",
     "i-avatar": "/components/avatar",
     "i-service-rating": "/components/service_rating",
-    "i-rating":"/components/rating",
-    "i-safe-area":"/components/safe-area"
+    "i-rating": "/components/rating",
+    "i-safe-area": "/components/safe-area"
   }
 }

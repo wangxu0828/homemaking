@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="user-info">
+    <view class="avatar">
+      <open-data class="" type="userAvatarUrl" open-gid=""></open-data>
+    </view>
+    <view class="nickname">
+      <open-data class="" type="userNickName" open-gid=""></open-data>
+    </view>
+  </view>
+  <view class="button-area">
+    <button class="login-button" bind:tap="handleLogin">授权登陆</button>
+    <button class="back-home-button" type="default">返回首页</button>
+  </view>
+</view>

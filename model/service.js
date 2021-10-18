@@ -1,7 +1,6 @@
 import Http from '../utils/http'
 import Base from './base'
 class Service extends Base {
-  
   async getServiceList(category_id = null, type = null) {
     if (!this.serviceFlag) {
       return this.serviceList
@@ -26,11 +25,19 @@ class Service extends Base {
     return this.serviceList
   }
 
-  
-
   static getServiceById(serviceId) {
     return Http.request({
       url: 'v1/service/' + serviceId,
+    })
+  }
+
+  static updateServiceStatus(serviceId, action) {
+    return Http.request({
+      url: `v1/service/${serviceId}`,
+      data: {
+        action,
+      },
+      method: 'POST',
     })
   }
 }

@@ -1,37 +1,45 @@
-import serviceStatus from "../../../../enum/service-status";
-import servicrAction from "../../../../enum/service-action";
+import serviceStatus from '../../../../enum/service-status'
+import servicrAction from '../../../../enum/service-action'
+import behavior from '../behavior/index'
+import { getDateSet } from '../../../../utils/utils'
 const componentOptions = {
   // 组件选项
+  behaviors: [behavior],
   options: {
     multipleSlots: true,
   },
-  behaviors: [],
-  properties: {
-    service: Object
-  },
+  properties: {},
   // 组件数据
   data: {
     isPageHidden: false, // 页面是否处于隐藏状态
     serviceStatusEnum: serviceStatus,
-    servicrActionEnum: servicrAction
+    servicrActionEnum: servicrAction,
   },
   // 数据监听器
   observers: {},
   // 组件方法
   methods: {
-    init() { },
+    init() {},
+    handleEditService() {
+      this.triggerEvent('edit')
+    },
+    handleUpdateService(e) {
+      // const action = e.currentTarget.dataset.action
+      const action = getDateSet(e, 'action')
+      this.triggerEvent('update', { action })
+    },
   },
   // 组件生命周期
   lifetimes: {
-    created() { },
+    created() {},
     attached() {
       this.init()
     },
-    ready() { },
-    moved() { },
-    detached() { },
+    ready() {},
+    moved() {},
+    detached() {},
   },
-  definitionFilter() { },
+  definitionFilter() {},
   // 页面生命周期
   pageLifetimes: {
     // 页面被展示
@@ -54,7 +62,7 @@ const componentOptions = {
       // 清除定时器等操作
     },
     // 页面尺寸变化时
-    resize() { },
+    resize() {},
   },
 }
 

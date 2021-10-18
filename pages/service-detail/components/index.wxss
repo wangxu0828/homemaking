@@ -6,3 +6,7 @@
   box-sizing: border-box;
   background-color: #fff;
 }
+
+.action-bar-item button {
+  flex: 1;
+}

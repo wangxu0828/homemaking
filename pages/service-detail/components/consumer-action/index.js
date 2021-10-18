@@ -1,36 +1,40 @@
-import serviceType from "../../../../enum/service-type";
-
+import serviceType from '../../../../enum/service-type'
+import behavior from '../behavior/index'
 const componentOptions = {
   // 组件选项
   options: {
     multipleSlots: true,
   },
-  behaviors: [],
-  properties: {
-    service: Object
-  },
+  behaviors: [behavior],
+  properties: {},
   // 组件数据
   data: {
     isPageHidden: false, // 页面是否处于隐藏状态,
-    serviceTypeEnum: serviceType
+    serviceTypeEnum: serviceType,
   },
   // 数据监听器
   observers: {},
   // 组件方法
   methods: {
-    init() { },
+    init() {},
+    handleChat() {
+      this.triggerEvent('chat')
+    },
+    handleOrder() {
+      this.triggerEvent('order')
+    },
   },
   // 组件生命周期
   lifetimes: {
-    created() { },
+    created() {},
     attached() {
       this.init()
     },
-    ready() { },
-    moved() { },
-    detached() { },
+    ready() {},
+    moved() {},
+    detached() {},
   },
-  definitionFilter() { },
+  definitionFilter() {},
   // 页面生命周期
   pageLifetimes: {
     // 页面被展示
@@ -53,7 +57,7 @@ const componentOptions = {
       // 清除定时器等操作
     },
     // 页面尺寸变化时
-    resize() { },
+    resize() {},
   },
 }
 

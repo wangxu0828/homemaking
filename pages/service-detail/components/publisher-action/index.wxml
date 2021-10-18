@@ -1,6 +1,6 @@
 <view class="action-bar-item">
   <!-- 服务状态不是已取消,已下架的时候 -->
-  <button wx:if="{{service.status !== serviceStatusEnum.CANCELED && service.status !== serviceStatusEnum.OFF_SHELVES}}" data-action="{{servicrActionEnum.CANCEL}}">
+  <button wx:if="{{service.status !== serviceStatusEnum.CANCELED && service.status !== serviceStatusEnum.OFF_SHELVES}}" bind:tap="handleUpdateService"  data-action="{{servicrActionEnum.CANCEL}}">
     取消服务
   </button>
   <!-- 服务状态不是已取消,已下架的时候 -->
@@ -12,7 +12,7 @@
     暂停服务
   </button>
   <!-- 服务状态必须是待发布的状态 -->
-  <button wx:if="{{service.status !== serviceStatusEnum.UNPUBLISHED}}" data-action="{{servicrActionEnum.PUBLISH}}">
+  <button wx:if="{{service.status !== serviceStatusEnum.UNPUBLISHED}}" data-action="{{servicrActionEnum.PUBLISH}}" bind:tap="handleUpdateService">
     发布
   </button>
 </view>
