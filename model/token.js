@@ -11,6 +11,8 @@ class Token {
       },
       method: 'Post',
     })
+
+    return res.token
   }
 }
 
