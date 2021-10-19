@@ -38,6 +38,11 @@ page {
   margin-top: 60rpx;
 }
 
-.auth-button button {
+.auth-button {
   background-color: #f3d066;
+}
+
+.button-area {
+  display: flex;
+  flex-direction: column;
 }

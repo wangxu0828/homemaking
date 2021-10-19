@@ -66,3 +66,7 @@
   flex-direction: column;
   width: 100%;
 }
+
+.inner-content {
+  padding-bottom: 250rpx;
+}

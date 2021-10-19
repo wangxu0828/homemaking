@@ -5,6 +5,7 @@ import serviceType from '../../enum/service-type'
 import ServiceStatus from '../../enum/service-status'
 import { getEventParam } from '../../utils/utils'
 import serviceAction from '../../enum/service-action'
+import cache from '../../enum/cache'
 const rating = new Rating()
 Page({
   data: {
@@ -34,6 +35,7 @@ Page({
   },
 
   _checkRole() {
+    console.log('_checkRole');
     const userInfo = User.getUserInfoByLocal()
     if (userInfo && userInfo.id === this.data.service.publisher.id) {
       this.setData({
@@ -43,6 +45,10 @@ Page({
   },
 
   async _getRatingList() {
+    if (this.data.service.type === serviceType.SEEK) {
+      return
+    }
+
     const res = await rating.reset().getRatingList(this.data.serviceId)
     this.setData({
       ratingList: res,
@@ -84,12 +90,47 @@ Page({
     await this._getServiceById()
   },
   handleEditService() {
-    console.log('Edit')
+    const service = JSON.stringify(this.data.service)
+    wx.navigateTo({
+      url: '/pages/service-edit/index?service=' + service,
+    });
+
   },
   handleChat() {
-    console.log('chat')
+    const targetUserId = this.data.service.publisher.id
+    const service = JSON.stringify(this.data.service)
+    wx.navigateTo({
+      url: `/pages/conversation/index?service=${service}&targetUserId=${targetUserId}`,
+    });
   },
   handleOrder() {
-    console.log('order')
+    // console.log('order')
+    if (!wx.getStorageSync(cache.TOKEN)) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+        events: {
+          login: () => {
+            this._checkRole()
+          }
+        }
+      });
+      return
+    }
+    const service = JSON.stringify(this.data.service)
+    wx.navigateTo({
+      url: `/pages/order/index?service=${service}`,
+    });
+
   },
+
+  async onReachBottom() {
+    if (!rating.serviceFlag) {
+      return
+    }
+
+    const ratingList = await rating.getRatingList(this.data.serviceId)
+    this.setData({
+      ratingList
+    })
+  }
 })

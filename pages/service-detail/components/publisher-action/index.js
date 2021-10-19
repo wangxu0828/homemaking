@@ -19,7 +19,7 @@ const componentOptions = {
   observers: {},
   // 组件方法
   methods: {
-    init() {},
+    init() { },
     handleEditService() {
       this.triggerEvent('edit')
     },
@@ -31,15 +31,15 @@ const componentOptions = {
   },
   // 组件生命周期
   lifetimes: {
-    created() {},
+    created() { },
     attached() {
       this.init()
     },
-    ready() {},
-    moved() {},
-    detached() {},
+    ready() { },
+    moved() { },
+    detached() { },
   },
-  definitionFilter() {},
+  definitionFilter() { },
   // 页面生命周期
   pageLifetimes: {
     // 页面被展示
@@ -62,7 +62,7 @@ const componentOptions = {
       // 清除定时器等操作
     },
     // 页面尺寸变化时
-    resize() {},
+    resize() { },
   },
 }
 

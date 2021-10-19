@@ -1,6 +1,10 @@
 <view class="action-bar-item">
   <!-- 联系对方 -->
-  <button bind:tap="handleChat">联系对方</button>
+  <i-button i-button-class="test-button" icon="telephone" bind:tap="handleChat" wx:if="{{service.type}}">
+    联系对方
+  </i-button>
   <!-- 服务状态是不是可提供的 -->
-  <button bind:tap="handleOrder" wx:if="{{service.type === serviceTypeEnum.PROVIDE}}">立即预约</button>
+  <i-button shape="semicircle" bind:tap="handleOrder" wx:if="{{service.type === serviceTypeEnum.PROVIDE}}">
+    立即预约
+  </i-button>
 </view>

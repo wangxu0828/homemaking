@@ -19,6 +19,8 @@ Page({
       await User.login()
       // 每次登录之后,将用户信息更新一下
       await User.updateUserInfo(res.userInfo)
+      const events = this.getOpenerEventChannel()
+      events.emit('login')
       wx.navigateBack();
     } catch (error) {
       wx.showModal({
@@ -31,4 +33,11 @@ Page({
     wx.hideLoading()
 
   },
+
+  handleToHome() {
+    wx.switchTab({
+      url: '/pages/home/home',
+    });
+
+  }
 })

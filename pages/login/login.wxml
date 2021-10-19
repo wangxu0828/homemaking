@@ -8,7 +8,9 @@
     </view>
   </view>
   <view class="button-area">
-    <button class="login-button" bind:tap="handleLogin">授权登陆</button>
-    <button class="back-home-button" type="default">返回首页</button>
+    <i-button shape="semicircle" class="login-button" bind:tap="handleLogin">授权登陆</i-button>
+    <i-button bgColor="#fff" class="back-home-button" type="default" bind:tap="handleToHome">
+      返回首页
+    </i-button>
   </view>
 </view>
