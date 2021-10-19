@@ -1,4 +1,5 @@
 import serviceType from '../../enum/service-type'
+import Category from '../../model/category'
 const componentOptions = {
   // 组件选项
   options: {
@@ -6,32 +7,100 @@ const componentOptions = {
   },
   behaviors: [],
   properties: {
-    form: Object
+    form: Object,
   },
   // 组件数据
   data: {
     typeList: [
       {
         id: serviceType.PROVIDE,
-        name: '提供服务'
+        name: '提供服务',
       },
       {
         id: serviceType.SEEK,
-        name: '找服务'
-      }
+        name: '找服务',
+      },
     ],
-    typePickerIndex: null
-  },
-  methods: {
-    _init() {
-
+    typePickerIndex: null,
+    categoryList: [],
+    categoryPickerIndex: null,
+    formData: {
+      type: null,
+      title: '',
+      category_id: null,
+      cover_image_id: null,
+      description: '',
+      designated_place: false,
+      begin_date: '',
+      end_data: '',
+      price: '',
     },
   },
-  lifetime: {
+  methods: {
+    async _init() {
+      const typePickerIndex = this.data.typeList.findIndex(
+        (item) => this.data.form.type === item.id,
+      )
+
+      //获取分类列表
+      const categoryList = await Category.getCategoryList()
+      console.log(categoryList)
+      const categoryPickerIndex = categoryList.findIndex((item) => {
+        item.id === this.data.form.category_id
+      })
+      this.setData({
+        typePickerIndex: typePickerIndex !== -1 ? typePickerIndex : null,
+        formData: {
+          type: this.data.form.type,
+          title: this.data.form.title,
+          category_id: this.data.form.category_id,
+          cover_image_id: this.data.form.cover_image
+            ? form.cover_image.id
+            : null,
+          description: this.data.form.description,
+          designated_place: this.data.form.designated_place,
+          begin_date: this.data.form.begin_date,
+          end_date: this.data.form.end_date,
+          price: this.data.form.price,
+        },
+        categoryList,
+        categoryPickerIndex:
+          categoryPickerIndex !== -1 ? categoryPickerIndex : null,
+      })
+    },
+
+    handleTypeChange(e) {
+      const index = e.detail.value
+      this.setData({
+        typePickerIndex: index,
+        // 对一个对象里面指定的属性做数据绑定
+        ['formData.type']: this.data.typeList[index].id,
+      })
+    },
+
+    handleInput(e) {
+      const field = e.currentTarget.dataset.field
+      const value = e.detail.value
+
+      setData({
+        [`formData.${field}`]: value,
+      })
+    },
+
+    handleCategoryChange(e) {
+      const index = e.detail.value
+      this.setData({
+        categoryPickerIndex: index,
+        // 对一个对象里面指定的属性做数据绑定
+        ['formData.category_id']: this.data.categoryList[index].id,
+      })
+    },
+  },
+  lifetimes: {
     attached() {
       this._init()
-    }
-  }
+    },
+  },
 }
 
 Component(componentOptions)

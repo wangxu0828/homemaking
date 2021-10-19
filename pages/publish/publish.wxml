@@ -1,1 +1,3 @@
-<view class="container">发布</view>
+<view class="container">
+  <i-service-form></i-service-form>
+</view>

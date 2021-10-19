@@ -37,6 +37,6 @@
     <input value="{{formData.price}}" bind:input="handleInput" data-field="price" placeholder="服务价格不少于1"></input>
   </mp-cell>
   <view class="form-floor">
-    <i-button size="long" shape="circle" bind:tap="submit"></i-button>
+    <i-button size="long" shape="circle" bind:tap="submit">提交</i-button>
   </view>
 </mp-form>
