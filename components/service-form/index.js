@@ -95,6 +95,32 @@ const componentOptions = {
         ['formData.category_id']: this.data.categoryList[index].id,
       })
     },
+
+    handleSwitchChange(e) {
+      const res = e.detail.value;
+      this.setData({
+        ['formData.designated_place']: res
+      })
+    },
+
+    handleBeginDateChange() {
+      const beginDate = e.detail.value;
+      this.setData({
+        ['formData.begin_date']: endDate
+      })
+    },
+
+    handleEndDateChange() {
+      const endDate = e.detail.value;
+      this.setData({
+        ['formData.end_date']: endDate
+      })
+    },
+
+    submit() {
+      console.log(this.data.formData);
+    }
+
   },
   lifetimes: {
     attached() {
