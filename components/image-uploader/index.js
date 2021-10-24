@@ -13,7 +13,7 @@ const componentOptions = {
     // 最大上传图片数量
     maxCount: {
       type: Number,
-      value: 4
+      value: 1
     },
     // 单个图片文件大小限制，单位 M
     size: {
@@ -68,41 +68,7 @@ const componentOptions = {
   methods: {
     init() { },
   },
-  // 组件生命周期
-  lifetimes: {
-    created() { },
-    attached() {
-      this.init()
-    },
-    ready() { },
-    moved() { },
-    detached() { },
-  },
-  definitionFilter() { },
-  // 页面生命周期
-  pageLifetimes: {
-    // 页面被展示
-    show() {
-      const { isPageHidden } = this.data
 
-      // show事件发生前，页面不是处于隐藏状态时
-      if (!isPageHidden) {
-        return
-      }
-
-      // 重新执行定时器等操作
-    },
-    // 页面被隐藏
-    hide() {
-      this.setData({
-        isPageHidden: true,
-      })
-
-      // 清除定时器等操作
-    },
-    // 页面尺寸变化时
-    resize() { },
-  },
 }
 
 Component(componentOptions)
