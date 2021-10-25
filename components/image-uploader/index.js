@@ -1,3 +1,5 @@
+import FileUploader from "../../utils/file-uploader"
+
 const componentOptions = {
   // 组件选项
   options: {
@@ -66,8 +68,94 @@ const componentOptions = {
   },
   // 组件方法
   methods: {
-    init() { },
-  },
+    // 预览图片事件
+    handlePreview(e) {
+      const index = e.currentTarget.dataset.index
+      const urls = this.data._files.map(item => item.path)
+      wx.previewImage({
+        urls: urls,
+        current: urls[index]
+      })
+    },
+    // 删除图片事件
+    handleDelete(e) {
+      const index = e.currentTarget.dataset.index
+      const deleted = this.data._files.splice(index, 1)
+
+      this.setData({
+        _files:this.data._files
+      })
+
+      this.triggerEvent('delete', {index, item:deleted[0]})
+    },
+    // 选择图片事件
+    handleChooseImage() {
+      // 选择图片事件
+      const res = await wx.chooseImage({
+        count: this.data.maxCount,
+        sizeType: this.data.sizeType,
+        sourceType: this.data.sourceType,
+      });
+      
+      const _files = this._fileFilter(res.tempFiles)
+      this.setData({
+        _files: _files
+      })
+
+      // 再做一层过滤,将状态位上传中的图片给过滤出来
+      const uploadTask = _files.filter(item => item.status === this.data.uploadStatusEnum.UPLOADING)
+      // 真正的上传操作
+      this._executeUpload(uploadTask)
+    },
+
+    // 对选中的图片做筛选,对大小进行判断,
+    _fileFilter(tempFiles) {
+      const res = []
+      tempFiles.forEach((item, index) => {
+        let error = ''
+        if(item.size > (1024*1024*this.data.size)) {
+          error==`图片大小不能超过${this.data.size}M`
+          this.triggerEvent('validateFail', {item, error})
+        }
+
+        const length = this.data._files.length
+
+        res.push({
+          id: null,
+          key: index+length+'',
+          path:item.path,
+          status:error?this.data.uploadStatusEnum.ERROR:this.data.uploadStatusEnum.UPLOADING,
+          error
+        })
+      })
+      return [...this.data._files, ...res]
+    },
+
+    // 上传操作具体
+    async _executeUpload(uploadTask) {
+      const success = []
+      for (const file of uploadTask) {
+        try {
+          const res = await FileUploader.upload(file.path, file.key)
+          file.id = res[0].id
+          file.url = res[0].path
+          file.status = this.data.uploadStatusEnum.SUCCESS
+          this.data._files[file.key] = file
+          success
+        } catch (error) {
+          file.status = this.data.uploadStatusEnum.ERROR
+          file.error = this.data._files[file.key] = file
+          this.triggerEvent('uploadfail', {file, error:error})
+        }
+      }
+      this.setData({
+        _files:this.data._files
+      })
+      if (success.length) {
+        this.triggerEvent('uploadsuccess', { files: success })
+      }
+    }
+  }, 
 
 }
 
