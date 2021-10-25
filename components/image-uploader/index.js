@@ -89,7 +89,7 @@ const componentOptions = {
       this.triggerEvent('delete', {index, item:deleted[0]})
     },
     // 选择图片事件
-    handleChooseImage() {
+   async handleChooseImage() {
       // 选择图片事件
       const res = await wx.chooseImage({
         count: this.data.maxCount,
