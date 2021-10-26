@@ -1,1 +1,3 @@
-<view>修改</view>
+<view class="container">
+  <i-service-form form="{{formData}}" bind:submit="handleSubmit"></i-service-form>
+</view>

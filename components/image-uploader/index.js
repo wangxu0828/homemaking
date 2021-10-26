@@ -83,20 +83,19 @@ const componentOptions = {
       const deleted = this.data._files.splice(index, 1)
 
       this.setData({
-        _files:this.data._files
+        _files: this.data._files
       })
 
-      this.triggerEvent('delete', {index, item:deleted[0]})
+      this.triggerEvent('delete', { index, item: deleted[0] })
     },
     // 选择图片事件
-   async handleChooseImage() {
+    async handleChooseImage() {
       // 选择图片事件
       const res = await wx.chooseImage({
         count: this.data.maxCount,
         sizeType: this.data.sizeType,
         sourceType: this.data.sourceType,
       });
-      
       const _files = this._fileFilter(res.tempFiles)
       this.setData({
         _files: _files
@@ -113,18 +112,18 @@ const componentOptions = {
       const res = []
       tempFiles.forEach((item, index) => {
         let error = ''
-        if(item.size > (1024*1024*this.data.size)) {
-          error==`图片大小不能超过${this.data.size}M`
-          this.triggerEvent('validateFail', {item, error})
+        if (item.size > (1024 * 1024 * this.data.size)) {
+          error == `图片大小不能超过${this.data.size}M`
+          this.triggerEvent('validateFail', { item, error })
         }
 
         const length = this.data._files.length
 
         res.push({
           id: null,
-          key: index+length+'',
-          path:item.path,
-          status:error?this.data.uploadStatusEnum.ERROR:this.data.uploadStatusEnum.UPLOADING,
+          key: index + length + '',
+          path: item.path,
+          status: error ? this.data.uploadStatusEnum.ERROR : this.data.uploadStatusEnum.UPLOADING,
           error
         })
       })
@@ -141,21 +140,22 @@ const componentOptions = {
           file.url = res[0].path
           file.status = this.data.uploadStatusEnum.SUCCESS
           this.data._files[file.key] = file
-          success
-        } catch (error) {
+          success.push(file)
+        } catch (e) {
           file.status = this.data.uploadStatusEnum.ERROR
-          file.error = this.data._files[file.key] = file
-          this.triggerEvent('uploadfail', {file, error:error})
+          file.error = e
+          this.data._files[file.key] = file
+          this.triggerEvent('uploadfail', { file, error: e })
         }
       }
       this.setData({
-        _files:this.data._files
+        _files: this.data._files
       })
       if (success.length) {
         this.triggerEvent('uploadsuccess', { files: success })
       }
     }
-  }, 
+  },
 
 }
 

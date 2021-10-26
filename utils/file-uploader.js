@@ -1,12 +1,13 @@
-
-class FileUploader{
-  static async upload(filePath, key="file") {
+import APIConfig from "../config/api";
+import wxToPromise from "./wx";
+class FileUploader {
+  static async upload(filePath, key = "file") {
     let res
     try {
       res = await wxToPromise('uploadFile', {
-        url:APIConfig.baseUrl + '/v1/file',
-        filePath:filePath,
-        name:key
+        url: APIConfig.baseUrl + '/v1/file',
+        filePath: filePath,
+        name: key
       })
     } catch (error) {
       wx.showToast({
@@ -18,8 +19,7 @@ class FileUploader{
     }
 
     const serverData = JSON.parse(res.data)
-
-    if(res.statusCode !== 201) {
+    if (res.statusCode !== 201) {
       wx.showToast({
         title: serverData.message,
         icon: 'none',

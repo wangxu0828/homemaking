@@ -14,7 +14,9 @@
       <view wx:else>请选择分类</view>
     </picker>
   </mp-cell>
-  <mp-cell title="封面图"></mp-cell>
+  <mp-cell title="封面图">
+    <i-image-uploader files="{{files}}" maxCount="{{1}}" bind:uploadsuccess="handleUploadSuccess"></i-image-uploader>
+  </mp-cell>
   <mp-cell title="服务描述">
     <textarea class="desc-textarea" bind:input="handleInput" data-field="description" value="{{formData.description}}" placeholder="必填,不能少于40字"></textarea>
   </mp-cell>

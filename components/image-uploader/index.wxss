@@ -3,7 +3,7 @@
   flex-wrap: wrap;
 }
 
-.uploader-item {
+.uploader-image {
   position: relative;
   display: flex;
   align-items: center;

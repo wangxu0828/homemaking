@@ -6,6 +6,14 @@ const componentOptions = {
     multipleSlots: true,
   },
   behaviors: [],
+  observers: {
+    form(newValue) {
+      if (!newValue) {
+        return
+      }
+      this._init()
+    }
+  },
   properties: {
     form: Object,
   },
@@ -39,23 +47,26 @@ const componentOptions = {
   methods: {
     async _init() {
       const typePickerIndex = this.data.typeList.findIndex(
-        (item) => this.data.form.type === item.id,
+        item => this.data.form.type === item.id,
       )
 
       //获取分类列表
       const categoryList = await Category.getCategoryList()
-      console.log(categoryList)
+      console.log(categoryList);
+
       const categoryPickerIndex = categoryList.findIndex((item) => {
         item.id === this.data.form.category_id
       })
+
       this.setData({
         typePickerIndex: typePickerIndex !== -1 ? typePickerIndex : null,
+        files: this.data.form.cover_image ? [this.data.form.cover_image] : [],
         formData: {
           type: this.data.form.type,
           title: this.data.form.title,
           category_id: this.data.form.category_id,
           cover_image_id: this.data.form.cover_image
-            ? form.cover_image.id
+            ? this.data.form.cover_image.id
             : null,
           description: this.data.form.description,
           designated_place: this.data.form.designated_place,
@@ -81,8 +92,7 @@ const componentOptions = {
     handleInput(e) {
       const field = e.currentTarget.dataset.field
       const value = e.detail.value
-
-      setData({
+      this.setData({
         [`formData.${field}`]: value,
       })
     },
@@ -118,14 +128,21 @@ const componentOptions = {
     },
 
     submit() {
-      console.log(this.data.formData);
-    }
+      // console.log(this.data.formData);
+      this.triggerEvent('submit', { formData: this.data.formData })
+    },
 
+    handleUploadSuccess(e) {
+      const id = e.detail.files[0].id
+      this.setData({
+        ['formData.cover_image_id']: id
+      })
+    }
   },
   lifetimes: {
-    attached() {
-      this._init()
-    },
+    // attached() {
+    //   this._init()
+    // },
   },
 }
 

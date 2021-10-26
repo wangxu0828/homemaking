@@ -4,7 +4,5 @@
   "enablePullDownRefresh": false,
   "onReachBottomDistance": 50,
   "disableScroll": false,
-  "usingComponents": {
-    "i-service-form": "/components/service-form"
-  }
+  "usingComponents": {}
 }

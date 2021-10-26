@@ -1,16 +1,36 @@
+import Service from "../../model/service"
+
 const pageOptions = {
   // 页面数据
   data: {
-    isFirstOnShow: true, // 是否为首次执行onShow
+    formData: {},
+    serviceId: ''
   },
   // 页面载入时
   onLoad(e) {
-    this.init(e)
+    const service = JSON.parse(e.service)
+    this._init(service)
   },
   // 页面初始化
-  init(e) {},
+  _init(service) {
+    const formData = {
+      type: service.type,
+      title: service.title,
+      category_id: service.category_id,
+      description: service.description,
+      designated_place: service.designated_place,
+      cover_image: service.cover_image,
+      begin_date: service.begin_date,
+      end_date: service.end_date,
+      price: service.price
+    }
+    this.setData({
+      formData,
+      serviceId: service.id
+    })
+  },
   // 页面准备好时
-  onReady() {},
+  onReady() { },
   // 页面显示时
   onShow() {
     const { isFirstOnShow } = this.data
@@ -24,15 +44,15 @@ const pageOptions = {
     }
   },
   // 页面隐藏时
-  onHide() {},
+  onHide() { },
   // 页面卸载时
-  onUnload() {},
+  onUnload() { },
   // 下拉页面时
-  onPullDownRefresh() {},
+  onPullDownRefresh() { },
   // 到达页面底部时
-  onReachBottom() {},
+  onReachBottom() { },
   // 页面滚动时
-  onPageScroll() {},
+  onPageScroll() { },
   // 分享时，注：onShareAppMessage不能为async异步函数，会导致不能及时取得返回值，使得分享设置无效
   onShareAppMessage() {
     /* const title = ''
@@ -45,6 +65,33 @@ const pageOptions = {
       imageUrl,
     } */
   },
+  async handleSubmit() {
+    const res = wx.showModal({
+      title: '提示',
+      content: '是否确认修改该服务?提交后会进入审核状态',
+      showCancel: true,
+    });
+
+    if (!res.confirm) {
+      return
+    }
+
+    wx.showToast({
+      title: '正在发布',
+      mask: true
+    })
+    const formData = e.detail.formData
+    try {
+      await Service.editService(this.data.serviceId, formData)
+      this._resetForm()
+      wx.redirectTo({
+        url: `/pages/publisher-success/index?type=${formData.type}`
+      })
+    } catch (error) {
+      console.log(error);
+    }
+    wx.hideLoading();
+  }
 }
 
 Page(pageOptions)

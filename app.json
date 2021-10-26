@@ -1,5 +1,5 @@
 {
-  "pages": ["pages/home/home", "pages/message/message", "pages/my/my", "pages/publish/publish", "pages/service-detail/service-detail", "pages/login/login", "pages/service-edit/index", "pages/conversation/index", "pages/order/index","pages/order-success/index","pages/my-order/index"],
+  "pages": ["pages/home/home", "pages/message/message", "pages/my/my", "pages/publish/publish", "pages/service-detail/service-detail", "pages/login/login", "pages/service-edit/index", "pages/conversation/index", "pages/order/index", "pages/order-success/index", "pages/my-order/index", "pages/publisher-success/index"],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
@@ -51,12 +51,13 @@
     "i-service-rating": "/components/service_rating",
     "i-rating": "/components/rating",
     "i-safe-area": "/components/safe-area",
-    "i-button":"/components/button",
-    "mp-msg":"weui-miniprogram/msg/msg",
-    "mp-form":"weui-miniprogram/form/form",
-    "mp-cell":"weui-miniprogram/cell/cell"
+    "i-button": "/components/button",
+    "i-image-uploader": "/components/image-uploader",
+    "mp-msg": "weui-miniprogram/msg/msg",
+    "mp-form": "weui-miniprogram/form/form",
+    "mp-cell": "weui-miniprogram/cell/cell"
   },
-  "useExtendedLib":{
-    "weui":true
+  "useExtendedLib": {
+    "weui": true
   }
 }
