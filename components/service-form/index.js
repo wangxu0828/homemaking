@@ -7,14 +7,14 @@ const componentOptions = {
     multipleSlots: true,
   },
   behaviors: [],
-  observers: {
-    form(newValue) {
-      if (!newValue) {
-        return
-      }
-      this._init()
-    }
-  },
+  // observers: {
+  //   form(newValue) {
+  //     if (!newValue) {
+  //       return
+  //     }
+  //     this._init()
+  //   }
+  // },
   properties: {
     form: Object,
   },
@@ -113,6 +113,21 @@ const componentOptions = {
     ],
     error: null
   },
+  pageLifetimes: {
+    show() {
+      if (this.data.resetForm) {
+        this._init()
+      }
+    },
+    hide() {
+      if (this.data.resetForm) {
+        this.setData({
+          showForm: false
+        })
+      }
+    },
+  }
+},
   methods: {
     async _init() {
       const typePickerIndex = this.data.typeList.findIndex(
@@ -120,108 +135,108 @@ const componentOptions = {
       )
       //获取分类列表
       const categoryList = await Category.getCategoryList()
-      console.log(categoryList);
+      console.log(categoryList)
 
-      const categoryPickerIndex = categoryList.findIndex((item) => {
-        item.id === this.data.form.category_id
-      })
+const categoryPickerIndex = categoryList.findIndex((item) => {
+  item.id === this.data.form.category_id
+})
 
+this.setData({
+  typePickerIndex: typePickerIndex !== -1 ? typePickerIndex : null,
+  files: this.data.form.cover_image ? [this.data.form.cover_image] : [],
+  formData: {
+    type: this.data.form.type,
+    title: this.data.form.title,
+    category_id: this.data.form.category_id,
+    cover_image_id: this.data.form.cover_image
+      ? this.data.form.cover_image.id
+      : null,
+    description: this.data.form.description,
+    designated_place: this.data.form.designated_place,
+    begin_date: this.data.form.begin_date,
+    end_date: this.data.form.end_date,
+    price: this.data.form.price,
+  },
+  categoryList,
+  categoryPickerIndex:
+    categoryPickerIndex !== -1 ? categoryPickerIndex : null,
+})
+},
+
+handleTypeChange(e) {
+  const index = e.detail.value
+  this.setData({
+    typePickerIndex: index,
+    // 对一个对象里面指定的属性做数据绑定
+    ['formData.type']: this.data.typeList[index].id,
+  })
+},
+
+handleInput(e) {
+  const field = e.currentTarget.dataset.field
+  const value = e.detail.value
+  this.setData({
+    [`formData.${field}`]: value,
+  })
+},
+
+handleCategoryChange(e) {
+  const index = e.detail.value
+  this.setData({
+    categoryPickerIndex: index,
+    // 对一个对象里面指定的属性做数据绑定
+    ['formData.category_id']: this.data.categoryList[index].id,
+  })
+},
+
+handleSwitchChange(e) {
+  const res = e.detail.value;
+  this.setData({
+    ['formData.designated_place']: res
+  })
+},
+
+handleBeginDateChange() {
+  const beginDate = e.detail.value;
+  this.setData({
+    ['formData.begin_date']: endDate
+  })
+},
+
+handleEndDateChange() {
+  const endDate = e.detail.value;
+  this.setData({
+    ['formData.end_date']: endDate
+  })
+},
+
+submit() {
+  // console.log(this.data.formData);
+  this.selectComponent('#form').validate((valid, errors) => {
+    console.log(valid, errors);
+    if (!valid) {
+      const errMsg = errors.map(item => item.message)
       this.setData({
-        typePickerIndex: typePickerIndex !== -1 ? typePickerIndex : null,
-        files: this.data.form.cover_image ? [this.data.form.cover_image] : [],
-        formData: {
-          type: this.data.form.type,
-          title: this.data.form.title,
-          category_id: this.data.form.category_id,
-          cover_image_id: this.data.form.cover_image
-            ? this.data.form.cover_image.id
-            : null,
-          description: this.data.form.description,
-          designated_place: this.data.form.designated_place,
-          begin_date: this.data.form.begin_date,
-          end_date: this.data.form.end_date,
-          price: this.data.form.price,
-        },
-        categoryList,
-        categoryPickerIndex:
-          categoryPickerIndex !== -1 ? categoryPickerIndex : null,
+        error: errMsg.join(';')
       })
-    },
-
-    handleTypeChange(e) {
-      const index = e.detail.value
-      this.setData({
-        typePickerIndex: index,
-        // 对一个对象里面指定的属性做数据绑定
-        ['formData.type']: this.data.typeList[index].id,
-      })
-    },
-
-    handleInput(e) {
-      const field = e.currentTarget.dataset.field
-      const value = e.detail.value
-      this.setData({
-        [`formData.${field}`]: value,
-      })
-    },
-
-    handleCategoryChange(e) {
-      const index = e.detail.value
-      this.setData({
-        categoryPickerIndex: index,
-        // 对一个对象里面指定的属性做数据绑定
-        ['formData.category_id']: this.data.categoryList[index].id,
-      })
-    },
-
-    handleSwitchChange(e) {
-      const res = e.detail.value;
-      this.setData({
-        ['formData.designated_place']: res
-      })
-    },
-
-    handleBeginDateChange() {
-      const beginDate = e.detail.value;
-      this.setData({
-        ['formData.begin_date']: endDate
-      })
-    },
-
-    handleEndDateChange() {
-      const endDate = e.detail.value;
-      this.setData({
-        ['formData.end_date']: endDate
-      })
-    },
-
-    submit() {
-      // console.log(this.data.formData);
-      this.selectComponent('#form').validate((valid, errors) => {
-        console.log(valid, errors);
-        if (!valid) {
-          const errMsg = errors.map(item => item.message)
-          this.setData({
-            error: errMsg.join(';')
-          })
-          return
-        }
-        this.triggerEvent('submit', { formData: this.data.formData })
-      })
-    },
-
-    handleUploadSuccess(e) {
-      const id = e.detail.files[0].id
-      this.setData({
-        ['formData.cover_image_id']: id
-      })
+      return
     }
+    this.triggerEvent('submit', { formData: this.data.formData })
+  })
+},
+
+handleUploadSuccess(e) {
+  const id = e.detail.files[0].id
+  this.setData({
+    ['formData.cover_image_id']: id
+  })
+}
   },
-  lifetimes: {
-    // attached() {
-    //   this._init()
-    // },
-  },
+lifetimes: {
+  // attached() {
+  //   this._init()
+  // },
+},
 }
 
 Component(componentOptions)

@@ -1,5 +1,5 @@
 <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
-<mp-form id="form" models="{{formData}}" rules="{{rules}}">
+<mp-form wx:if="{{showForm}}" id="form" models="{{formData}}" rules="{{rules}}">
   <mp-cell show-error prop="type" title="发布类型">
     <picker range="{{typeList}}" range-key="name" bind:change="handleTypeChange">
       <view wx:if="{{typePickerIndex!==null}}">{{typeList[typePickerIndex].name}}</view>
@@ -16,7 +16,7 @@
     </picker>
   </mp-cell>
   <mp-cell show-error prop="cover_image_id" title="封面图">
-    <i-image-uploader files="{{files}}" maxCount="{{1}}" bind:uploadsuccess="handleUploadSuccess"></i-image-uploader>
+    <i-image-uploader bind:hidepage="handleHidePage" files="{{files}}" maxCount="{{1}}" bind:uploadsuccess="handleUploadSuccess"></i-image-uploader>
   </mp-cell>
   <mp-cell show-error prop="description" title="服务描述">
     <textarea class="desc-textarea" bind:input="handleInput" data-field="description" value="{{formData.description}}" placeholder="必填,不能少于40字"></textarea>

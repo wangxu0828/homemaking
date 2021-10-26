@@ -70,6 +70,7 @@ const componentOptions = {
   methods: {
     // 预览图片事件
     handlePreview(e) {
+      this.triggerEvent('hidepage')
       const index = e.currentTarget.dataset.index
       const urls = this.data._files.map(item => item.path)
       wx.previewImage({
@@ -90,6 +91,7 @@ const componentOptions = {
     },
     // 选择图片事件
     async handleChooseImage() {
+      this.triggerEvent('hidepage')
       // 选择图片事件
       const res = await wx.chooseImage({
         count: this.data.maxCount,
