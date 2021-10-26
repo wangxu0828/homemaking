@@ -15,12 +15,11 @@ Page({
     }
   },
   async handleSubmit(e) {
-    const res = wx.showModal({
+    const res = await wx.showModal({
       title: '提示',
       content: '是否确认申请发布该服务',
       showCancel: true,
     });
-
     if (!res.confirm) {
       return
     }

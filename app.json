@@ -55,7 +55,8 @@
     "i-image-uploader": "/components/image-uploader",
     "mp-msg": "weui-miniprogram/msg/msg",
     "mp-form": "weui-miniprogram/form/form",
-    "mp-cell": "weui-miniprogram/cell/cell"
+    "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-toptips": "weui-miniprogram/toptips/toptips"
   },
   "useExtendedLib": {
     "weui": true

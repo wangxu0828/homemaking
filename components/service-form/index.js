@@ -1,5 +1,6 @@
 import serviceType from '../../enum/service-type'
 import Category from '../../model/category'
+const moment = require('../../lib/moment')
 const componentOptions = {
   // 组件选项
   options: {
@@ -43,13 +44,80 @@ const componentOptions = {
       end_data: '',
       price: '',
     },
+    rules: [
+      {
+        name: 'type',
+        rules: { required: true, message: '请指定服务类型' },
+      },
+      {
+        name: 'title',
+        rules: [
+          { required: true, message: '服务标题内容不能为空' },
+          { minlength: 5, message: '服务描述内容不能少于 5 个字' },
+        ],
+      },
+      {
+        name: 'category_id',
+        rules: { required: true, message: '未指定服务所属分类' },
+      },
+      {
+        name: 'cover_image_id',
+        rules: { required: true, message: '请上传封面图' },
+      },
+      {
+        name: 'description',
+        rules: [
+          { required: true, message: '服务描述不能为空' },
+          { minlength: 20, message: '服务描述内容不能少于 20 个字' },
+        ],
+      },
+      {
+        name: 'begin_date',
+        rules: [
+          { required: true, message: '请指定服务有效日期开始时间' },
+        ],
+      },
+      {
+        name: 'end_date',
+        rules: [
+          { required: true, message: '请指定服务有效日期结束时间' },
+          {
+            validator: function (rule, value, param, models) {
+              if (moment(value).isSame(models.begin_date) || moment(value).isAfter(models.begin_date)) {
+                return null
+              }
+              return '结束时间必须大于开始时间'
+            }
+          }
+        ],
+
+      },
+      {
+        name: 'price',
+        rules: [
+          { required: true, message: '请指定服务价格' },
+          {
+            validator: function (rule, value, param, models) {
+              const pattern = /(^[1-9]{1}[0-9]*$)|(^[0-9]*\.[0-9]{2}$)/
+              const isNum = pattern.test(value);
+
+              if (isNum) {
+                return null
+              }
+              return '价格必须是数字'
+            }
+          },
+          { min: 1, message: '天下没有免费的午餐' },
+        ],
+      },
+    ],
+    error: null
   },
   methods: {
     async _init() {
       const typePickerIndex = this.data.typeList.findIndex(
         item => this.data.form.type === item.id,
       )
-
       //获取分类列表
       const categoryList = await Category.getCategoryList()
       console.log(categoryList);
@@ -129,7 +197,17 @@ const componentOptions = {
 
     submit() {
       // console.log(this.data.formData);
-      this.triggerEvent('submit', { formData: this.data.formData })
+      this.selectComponent('#form').validate((valid, errors) => {
+        console.log(valid, errors);
+        if (!valid) {
+          const errMsg = errors.map(item => item.message)
+          this.setData({
+            error: errMsg.join(';')
+          })
+          return
+        }
+        this.triggerEvent('submit', { formData: this.data.formData })
+      })
     },
 
     handleUploadSuccess(e) {
