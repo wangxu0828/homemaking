@@ -56,6 +56,7 @@
     "mp-msg": "weui-miniprogram/msg/msg",
     "mp-form": "weui-miniprogram/form/form",
     "mp-cell": "weui-miniprogram/cell/cell",
+    "mp-cells": "weui-miniprogram/cells/cells",
     "mp-toptips": "weui-miniprogram/toptips/toptips"
   },
   "useExtendedLib": {

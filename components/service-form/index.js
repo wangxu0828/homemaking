@@ -113,7 +113,8 @@ const componentOptions = {
     ],
     error: null,
     showForm: true,
-    resetForm: true
+    resetForm: true,
+    serviceTypeEnum: serviceType
   },
   pageLifetimes: {
     show() {
@@ -201,14 +202,14 @@ const componentOptions = {
       })
     },
 
-    handleBeginDateChange() {
+    handleBeginDateChange(e) {
       const beginDate = e.detail.value;
       this.setData({
-        ['formData.begin_date']: endDate
+        ['formData.begin_date']: beginDate
       })
     },
 
-    handleEndDateChange() {
+    handleEndDateChange(e) {
       const endDate = e.detail.value;
       this.setData({
         ['formData.end_date']: endDate

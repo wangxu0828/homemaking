@@ -3,3 +3,12 @@ page {
     padding-bottom: 100rpx;
   
 }
+.container {
+  padding: 30rpx 0rpx 150rpx 0rpx;
+  background-color: #fff;
+}
+
+
+
+
+
