@@ -6,3 +6,13 @@ moment@^2.29.1:
   version "2.29.1"
   resolved "https://registry.nlark.com/moment/download/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
   integrity sha1-sr52n6MZQL6e7qZGnAdeNQBvo9M=
+
+tim-upload-plugin@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.nlark.com/tim-upload-plugin/download/tim-upload-plugin-1.0.3.tgz#7de5d1ae178b8b6d010d090342f6d0f1cb76f447"
+  integrity sha1-feXRrheLi20BDQkDQvbQ8ct29Ec=
+
+tim-wx-sdk-ws@^2.12.0:
+  version "2.12.0"
+  resolved "https://registry.nlark.com/tim-wx-sdk-ws/download/tim-wx-sdk-ws-2.12.0.tgz#4cd6f48cadd32d34f00f5261cb2e6b1049abc92a"
+  integrity sha1-TNb0jK3TLTTwD1Jhyy5rEEmrySo=

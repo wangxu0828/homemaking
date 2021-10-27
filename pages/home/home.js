@@ -1,6 +1,7 @@
 import Service from '../../model/service'
 import Category from '../../model/category'
 import { throttle } from '../../utils/utils'
+import Tim from '../../model/tim'
 const service = new Service()
 
 Page({
@@ -14,6 +15,7 @@ Page({
   },
   // 微信小程序钩子函数
   async onLoad() {
+    new Tim()
     await this._getServiceList()
     await this._getcategoryList()
     this.setData({

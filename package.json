@@ -1,5 +1,28 @@
 {
   "dependencies": {
-    "moment": "^2.29.1"
-  }
+    "moment": "^2.29.1",
+    "tim-upload-plugin": "^1.0.3",
+    "tim-wx-sdk-ws": "^2.12.0"
+  },
+  "name": "homemaking",
+  "version": "1.0.0",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangxu0828/homemaking.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wangxu0828/homemaking/issues"
+  },
+  "homepage": "https://github.com/wangxu0828/homemaking#readme",
+  "description": ""
 }
