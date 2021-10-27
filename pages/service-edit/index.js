@@ -9,6 +9,7 @@ const pageOptions = {
   // 页面载入时
   onLoad(e) {
     const service = JSON.parse(e.service)
+    console.log(service);
     this._init(service)
   },
   // 页面初始化
@@ -16,7 +17,7 @@ const pageOptions = {
     const formData = {
       type: service.type,
       title: service.title,
-      category_id: service.category_id,
+      category_id: service.category.id,
       description: service.description,
       designated_place: service.designated_place,
       cover_image: service.cover_image,
@@ -65,13 +66,13 @@ const pageOptions = {
       imageUrl,
     } */
   },
-  async handleSubmit() {
-    const res = wx.showModal({
+  async handleSubmit(e) {
+    const res = await wx.showModal({
       title: '提示',
       content: '是否确认修改该服务?提交后会进入审核状态',
       showCancel: true,
     });
-
+    console.log(res.confirm);
     if (!res.confirm) {
       return
     }
@@ -82,6 +83,7 @@ const pageOptions = {
     })
     const formData = e.detail.formData
     try {
+      console.log(312321);
       await Service.editService(this.data.serviceId, formData)
       this._resetForm()
       wx.redirectTo({
